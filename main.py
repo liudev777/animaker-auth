@@ -31,12 +31,14 @@ def index():
     print("CODE IS: ", code)
     print("Discord ID IS: ", discordId)
     REDIRECT_URI = "https://animaker-auth.herokuapp.com/"
+    # REDIRECT_URI= f'http://localhost:3000/'
 
     oauth = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI)
     # authorization_url, state = oauth.authorization_url(authUrl)
     tokenUrl = 'https://anilist.co/api/v2/oauth/token'
     try:
-        token = oauth.fetch_token(tokenUrl, code=code, client_secret=CLIENT_SECRET)
+        token = oauth.fetch_token(tokenUrl, code=code, client_secret=CLIENT_SECRET)['access_token']
+        print("Token is: ", token)
     except Exception as e:
         print(e)
         return "Something went wrong with the token, please contact kewb#7881 on discord"
