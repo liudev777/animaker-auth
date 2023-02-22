@@ -47,8 +47,8 @@ def index():
         print(e)
         return "An internal error occured with encryption"
     
+    insertData(discordId=discordId, anilistToken=encrypted_token)
     try:
-        insertData(discordId=discordId, anilistToken=encrypted_token)
         return f"You can close this page and go back to Discord!"
     except Exception as e:
         print (repr(e))
