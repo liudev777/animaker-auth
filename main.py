@@ -36,7 +36,7 @@ def index():
     # authorization_url, state = oauth.authorization_url(authUrl)
     tokenUrl = 'https://anilist.co/api/v2/oauth/token'
     try:
-        token = oauth.fetch_token(tokenUrl, code=code, client_secret=CLIENT_SECRET)['access_token']
+        token = oauth.fetch_token(tokenUrl, code=code, client_secret=CLIENT_SECRET)
     except Exception as e:
         print(e)
         return "Something went wrong with the token, please contact kewb#7881 on discord"
