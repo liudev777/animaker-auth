@@ -27,7 +27,7 @@ def index():
         return "Code not provided"   
     elif not (discordId):
         return "Please sign in through discord. Contact kewb#7881 for inquiry"
-    discordId = int(decrypt(discordId).decode())    
+    discordId = str(decrypt(discordId).decode())    
     print("CODE IS: ", code)
     print("Discord ID IS: ", discordId)
     REDIRECT_URI = "https://animaker-auth.herokuapp.com/"
