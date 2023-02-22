@@ -14,15 +14,6 @@ CLIENT_ID = os.environ["CLIENT_ID"]
 CLIENT_SECRET = os.environ["CLIENT_SECRET"]
 REDIRECT_URI = os.environ["REDIRECT_URI"]
 
-discordId = 12341234
-REDIRECT_URI= f'http://localhost:3000/'
-authUrl = f'https://anilist.co/api/v2/oauth/authorize?client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}&state={discordId}&response_type=code'
-
-
-# Base authorization URL
-auth_url = 'https://anilist.co/api/v2/oauth/authorize'
-
-
 
 
 app = Flask(__name__)
@@ -30,6 +21,9 @@ app = Flask(__name__)
 temp = None
 @app.route('/')
 def index():
+
+
+
     code = request.args.get('code') #anilist auth will auto append this after user auths and open up this
     discordId = request.args.get('state')
     discordId = int(decrypt(discordId).decode())
@@ -37,6 +31,8 @@ def index():
         return "Code not provided"   
     if not (discordId):
         return "Please sign in through discord. Contact kewb#7881 for inquiry"
+    
+    authUrl = f'https://anilist.co/api/v2/oauth/authorize?client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}&state={discordId}&response_type=code'
     
     oauth = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI)
     authorization_url, state = oauth.authorization_url(authUrl)
