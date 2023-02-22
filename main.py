@@ -30,7 +30,7 @@ def index():
     discordId = int(decrypt(discordId).decode())    
     print("CODE IS: ", code)
     print("Discord ID IS: ", discordId)
-    REDIRECT_URI = request.url
+    REDIRECT_URI = "https://animaker-auth.herokuapp.com/"
 
     oauth = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI)
     # authorization_url, state = oauth.authorization_url(authUrl)
