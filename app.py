@@ -1,6 +1,4 @@
 from requests_oauthlib import OAuth2Session
-from pprint import pp
-from requests_oauthlib import OAuth2Session
 from flask import Flask, request
 import os
 import dotenv
@@ -30,7 +28,7 @@ def index():
     discordId = str(decrypt(discordId).decode())    
     print("CODE IS: ", code)
     print("Discord ID IS: ", discordId)
-    REDIRECT_URI = "https://animaker-auth.herokuapp.com/"
+    REDIRECT_URI = "https://animaker-auth.onrender.com"
     # REDIRECT_URI= f'http://localhost:3000/'
 
     oauth = OAuth2Session(CLIENT_ID, redirect_uri=REDIRECT_URI)
